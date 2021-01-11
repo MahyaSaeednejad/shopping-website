@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Shopping.Website.Model
 {
-    public class product
+    public class Product
     {
         [JsonPropertyName("Id")]
         public String Id { get; set; }
