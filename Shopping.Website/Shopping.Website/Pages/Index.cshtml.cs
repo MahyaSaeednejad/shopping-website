@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ContosoCrafts.WebSite.Services;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using Shopping.Website.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,15 +13,18 @@ namespace Shopping.Website.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
+        public JsonFileProductService productService;
+        public IEnumerable<Product> products { get; private set; }
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(ILogger<IndexModel> logger, JsonFileProductService productService)
         {
             _logger = logger;
+            this.productService = productService;
         }
 
         public void OnGet()
         {
-
+           products = productService.GetProducts();
         }
     }
 }
